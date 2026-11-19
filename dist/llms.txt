@@ -1,0 +1,41 @@
+# Hunzala Saeed
+
+> SEO, AEO & GEO Specialist, WordPress Developer & Video Editor based in Rawalpindi, Pakistan. 25+ client websites delivered and 25+ Google Business Profiles optimized for businesses in Canada, the UK, the UAE, Saudi Arabia and Pakistan.
+
+## Services
+- SEO: Technical, on-page and local SEO that makes a website easy to crawl, easy to understand and worth ranking.
+- AEO & GEO: Answer Engine and Generative Engine Optimization, so your brand is the answer in Google AI Overviews, ChatGPT and Gemini.
+- Local SEO & Google Business Profile: More calls, direction requests and walk-ins from people searching nearby. 25+ Google Business Profiles optimized so far.
+- WordPress & Web Development: Fast, responsive websites built to convert, mostly on WordPress and Elementor, plus Shopify and custom builds.
+- Video Editing & Motion: Scroll-stopping reels, YouTube videos, promo ads and motion graphics that make a brand look as good as it is.
+
+## Projects
+- [Milton Tires](/work/milton-tires/): SEO + Development · Tires & Auto Repair · WordPress · live at https://miltontires.ca/
+- [Fort Erie Pit Stop](/work/fort-erie-pit-stop/): SEO + Development · Auto Repair & Maintenance · WordPress · live at https://forteriepitstop.ca/
+- [Advance Therapy Canada](/work/advance-therapy-canada/): SEO + Development · Autism & ABA Therapy · WordPress · live at https://adtherapy.ca/
+- [Advance Therapy UK](/work/advance-therapy-uk/): SEO + Development · Autism & ABA Therapy · WordPress · live at https://adtherapy.uk/
+- [Ontario ABA Therapy](/work/ontario-aba-therapy/): SEO + Development · Autism & ABA Therapy · WordPress · live at https://ontarioabatherapy.com/
+- [Smile Lounge Dentistry](/work/smile-lounge-dentistry/): SEO + Development · Dental Clinic · Next.js · live at https://smilelounge.ca/
+- [Bajwa CPA](/work/bajwa-cpa/): SEO + Development · Accounting & Tax · WordPress · live at https://bajwacpa.com/
+- [Autaq Banquet Hall](/work/autaq-banquet-hall/): SEO + Development · Banquet Hall & Events · WordPress · live at https://autaqbanquethall.ca/
+- [ABA Therapy Toronto](/work/aba-therapy-toronto/): SEO + Development · Autism & ABA Therapy · WordPress · live at https://abatherapytoronto.ca/
+- [ABA Therapy Mississauga](/work/aba-therapy-mississauga/): SEO + Development · Autism & ABA Therapy · WordPress · live at https://abatherapymississauga.ca/
+- [Advance Academy](/work/advance-academy/): SEO + Development · Autism Services & Education · WordPress · live at https://advanceacademy.ca/
+- [The Herb House](/work/the-herb-house/): SEO + Development · Natural Health Retail · Shopify · live at https://herbhouse.ca/
+- [Advance Therapy (Global)](/work/advance-therapy-global/): Development · Autism & ABA Therapy · WordPress · live at https://adtherapy.net/
+- [Ash Beauty Salon](/work/ash-beauty-salon/): Development · Beauty Salon & Laser · Custom build · live at https://ashbeautysalon.ca/
+- [Metacode](/work/metacode/): Development · Immersive Technology · Next.js · live at https://metacode.sa/
+- [Prodigy Group](/work/prodigy-group/): Development · Business Setup Services · WordPress · live at https://prodigygroup.ae/
+- [King Tire Trading](/work/king-tire/): Development · Tire Retail · Custom build · live at https://kingtire.ca/
+- [On the Ball](/work/on-the-ball/): Development · Sales & Leadership Training · Custom build · live at https://ontheball.co/
+- [Le Banquet](/work/le-banquet/): Development · Banquet Hall & Events · WordPress · live at https://lebanquethalls.ca/
+- [AYU Foundation](/work/ayu-foundation/): Development · Nonprofit · Autism Support · WordPress · live at https://ayufoundation.com/
+- [TNG Sunrise Services](/work/tng-sunrise-services/): Development · Financial Services · WordPress · live at https://tngsunriseservices.com/
+- [J Fiber Max](/work/j-fiber-max/): Development · Fiber Internet Provider · WordPress · live at https://jfibermax.com/
+- [Eskaynet IT Services](/work/eskaynet-it-services/): Development · IT Services · WordPress · live at https://eskaynet.ca/
+- [Creative Gurus](/work/creative-gurus/): Development · Creative & Digital Agency · Next.js · live at https://creativegurus.ca/
+
+## Contact
+- Email: hunzalasaeed890@gmail.com
+- Phone/WhatsApp: +92 324 5217334
+- LinkedIn: https://www.linkedin.com/in/hunzalasaeed890

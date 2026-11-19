@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block preload %}<link rel="preload" as="image" href="/assets/video/showreel.jpg">{% endblock %}
+{% block loader %}
+<div class="loader" aria-hidden="true">
+  <span class="loader__num">0</span>
+  <span class="loader__txt mono">Loading portfolio · SEO · AEO · GEO · WordPress · Video</span>
+</div>
+{% endblock %}
+{% block main %}
+{% set chips = ['milton-tires','advance-therapy-uk','bajwa-cpa','prodigy-group','metacode','smile-lounge-dentistry'] %}
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <div class="hero__query" role="img" aria-label="Search: Who can get my business found on Google and in AI answers?">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span><span class="q">Who can get my business found on Google and in AI answers?</span><span class="caret"></span></span>
+        </div>
+        <p class="hero__display h-xl" data-split>Get found.<br>Get <em>cited.</em><br>Get clients.</p>
+        <div class="answer">
+          <div class="answer__top">
+            <svg class="answer__spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.6 4.6 2.4 7.4 7 8.5v1c-4.6 1.1-6.4 3.9-7 8.5h-1c-.6-4.6-2.4-7.4-7-8.5v-1c4.6-1.1 6.4-3.9 7-8.5z"/></svg>
+            <span class="mono">Answer · 6 sources</span>
+          </div>
+          <h1>{{ P.name }}: SEO, AEO &amp; GEO Specialist, WordPress Developer &amp; Video Editor</h1>
+          <p>{{ P.name }} helps businesses get found on Google and cited by AI answer engines like ChatGPT, Gemini and Google AI Overviews. He has delivered SEO and website work for <strong>25+ client websites</strong> and optimized <strong>25+ Google Business Profiles</strong> for businesses in Canada, the UK, the UAE, Saudi Arabia and Pakistan, and edits reels and promo videos for brands.</p>
+          <div class="chips">
+            {% for s in chips %}{% for p in projects if p.slug == s %}
+            <a class="chip" href="{{ p.url }}"><b style="background:{{ p.accent }}">{{ loop.index }}</b>{{ p.domain }}</a>
+            {% endfor %}{% endfor %}
+          </div>
+        </div>
+        <div class="hero__cta">
+          <a class="btn btn--acc" href="#contact" data-magnetic>Start a project {{ m.arrow() }}</a>
+          <a class="btn btn--ghost" href="/work/" data-magnetic>See {{ projects|length }} live projects</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <video src="/assets/video/showreel.mp4" poster="/assets/video/showreel.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Showreel of video edits"></video>
+            <div class="phone__label"><span>Showreel</span><span class="mono" style="color:var(--acc)">● Rec</span></div>
+          </div>
+        </div>
+        <div class="float-tag float-tag--1"><strong>25+</strong>Google Business Profiles</div>
+        <div class="float-tag float-tag--2"><strong>AI-ready</strong>AEO &amp; GEO built in</div>
+      </div>
+    </div>
+    <div class="stats">
+      {% for n, suf, label in D.STATS %}
+      <div class="stat"><div class="stat__n" data-count="{{ n }}">{{ n }}<span>{{ suf }}</span></div><p>{{ label }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Clients">
+  <div class="marquee__track">
+    {% for _ in range(2) %}{% for p in projects %}<span class="marquee__item" {% if _ %}aria-hidden="true"{% endif %}>{{ p.name }}</span>{% endfor %}{% endfor %}
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">(01) Services</span><h2 class="h-lg" data-split>Search, answers<br>&amp; <span class="serif acc">stories</span></h2></div>
+      <p class="lead" data-reveal style="max-width:420px">One person for the whole funnel: the website, the rankings, the AI answers and the videos that make people click.</p>
+    </div>
+    <div class="svcs">
+      {% for s in services %}
+      <article class="svc" id="{{ s.id }}">
+        <span class="svc__num" aria-hidden="true">{{ s.num }}</span>
+        <div><h3>{{ s.name }}</h3><p>{{ s.lead }}</p><p class="svc__tools mono">{{ s.tools }}</p></div>
+        <ul>{% for i in s['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORK (horizontal) -->
+<section class="hwork" id="work" aria-labelledby="work-h">
+  <div class="hwork__pin">
+    <div class="hwork__track">
+      <div class="hwork__intro">
+        <div>
+          <span class="mono">(02) Selected work</span>
+          <h2 class="h-lg" id="work-h" style="margin-top:18px" data-split>Live sites,<br><span class="serif acc">real</span> brands</h2>
+        </div>
+        <div>
+          <p class="lead" style="font-size:17px">{{ projects|selectattr('scope','equalto',D.SEO_DEV)|list|length }} projects with SEO + development, {{ projects|selectattr('scope','equalto',D.DEV)|list|length }} development builds. Hover a card to scroll the real website.</p>
+          <a class="btn btn--ghost" href="/work/" style="margin-top:18px" data-magnetic>All {{ projects|length }} projects {{ m.arrow() }}</a>
+        </div>
+      </div>
+      {% for p in featured %}{{ m.pcard(p, eager=true) }}{% endfor %}
+      <div style="width:6vw;flex:none"></div>
+    </div>
+    <div class="hwork__progress" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="sec" id="videos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">(03) Video editing</span><h2 class="h-lg" data-split>Motion that<br><span class="serif acc">stops</span> the scroll</h2></div>
+      <p class="lead" data-reveal style="max-width:420px">Reels, commercials, product ads and motion graphics edited in Premiere Pro, After Effects and CapCut. Hover to preview, click to watch with sound.</p>
+    </div>
+    <div class="vwall">
+      {% for v in videos %}{{ m.vcard(v) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">(04) Process</span><h2 class="h-lg" data-split>From crawl<br>to <span class="serif acc">citation</span></h2></div>
+    </div>
+    <div class="process">
+      <div class="process__line" aria-hidden="true"><div class="process__fill"></div></div>
+      {% for name, text in D.PROCESS %}
+      <div class="step"><div class="step__n">0{{ loop.index }}</div><h3>{{ name }}</h3><p>{{ text }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <span class="mono">(05) About</span>
+    <div class="about2">
+      <figure class="portrait" data-cursor="Hi!">
+        <div class="portrait__back" aria-hidden="true"></div>
+        <div class="portrait__frame">
+          {% if photo %}<img src="{{ photo.src }}" alt="{{ P.name }}, SEO, AEO &amp; GEO specialist and WordPress developer" width="{{ photo.w }}" height="{{ photo.h }}" loading="lazy" decoding="async">
+          {% else %}<div class="portrait__ph"><span>{{ P.short }}</span><small class="mono">Photo coming soon</small></div>{% endif %}
+          <span class="portrait__shine" aria-hidden="true"></span>
+        </div>
+        <svg class="portrait__badge" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id="badge-circle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <circle cx="100" cy="100" r="98" fill="#08090D"/>
+          <text><textPath href="#badge-circle" textLength="462">SEO · AEO · GEO · WORDPRESS · VIDEO ·</textPath></text>
+          <circle cx="100" cy="100" r="34" fill="#D4FF3A"/>
+          <path d="M100 82c1.2 9 4.8 14.6 14 16.8v2.4c-9.2 2.2-12.8 7.8-14 16.8h-2c-1.2-9-4.8-14.6-14-16.8v-2.4c9.2-2.2 12.8-7.8 14-16.8z" fill="#0B0C08"/>
+        </svg>
+        <span class="portrait__chip portrait__chip--1"><strong>4+</strong>years experience</span>
+        <span class="portrait__chip portrait__chip--2"><strong>25+</strong>client websites</span>
+        <span class="portrait__chip portrait__chip--3"><i class="dot"></i>Available for new projects</span>
+        <figcaption class="sr-only">{{ P.name }}</figcaption>
+      </figure>
+      <div class="about2__text">
+        <h2 class="h-lg" data-split>Hi, I'm<br><span class="serif acc">Hunzala.</span></h2>
+        <p class="about__big" data-reveal style="margin-top:28px">An SEO, AEO &amp; GEO specialist and WordPress developer from {{ P.location }}. <span class="dim">For 4+ years I've built and optimized websites for clinics, auto shops, accountants, event venues and tech companies, and I edit the videos that bring their brands to life.</span></p>
+        <div class="skills-cloud" data-stagger>
+          {% for t in ['Technical SEO','On-Page SEO','Local SEO','AEO','GEO','Schema Markup','Google Business Profile','WordPress','Elementor','WooCommerce','Shopify','Ahrefs','Semrush','Screaming Frog','Search Console','GA4','Premiere Pro','After Effects','CapCut','Photoshop','Canva'] %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+        <div class="hero__cta"><a class="btn btn--acc" href="#contact" data-magnetic>Work with me {{ m.arrow() }}</a><a class="btn btn--ghost" href="{{ P.linkedin }}" target="_blank" rel="noopener me" data-magnetic>LinkedIn</a></div>
+      </div>
+    </div>
+    <ol class="tl tl--grid" data-stagger>
+      {% for x in D.EXPERIENCE %}
+      <li><span class="mono">{{ x.dates }}</span><h3>{{ x.role }}</h3><span class="co">{{ x.company }} · {{ x.where }}</span><p>{{ x.text }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="mono">(06) FAQ</span><h2 class="h-lg" data-split>Straight<br><span class="serif acc">answers</span></h2></div></div>
+    <div class="faq">
+      {% for q, a in D.FAQ %}
+      <details {% if loop.first %}open{% endif %}><summary><h3 style="font:inherit;letter-spacing:inherit;margin:0">{{ q }}</h3><i aria-hidden="true"></i></summary><p class="ans">{{ a }}</p></details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="contact">
+      <span class="mono" style="color:rgba(11,12,8,.6)">(07) Contact</span>
+      <h2 class="h-xl" style="margin-top:20px" data-split>Let's make your<br>brand <em>the answer.</em></h2>
+      <div class="contact__grid">
+        <div class="clinks">
+          <a class="clink" href="mailto:{{ P.email }}"><span><small>Email</small>{{ P.email }}</span>{{ m.ext() }}</a>
+          <a class="clink" href="{{ P.whatsapp }}" target="_blank" rel="noopener"><span><small>WhatsApp</small>{{ P.phone }}</span>{{ m.ext() }}</a>
+          <a class="clink" href="tel:{{ P.phone_e164 }}"><span><small>Phone</small>{{ P.phone }}</span>{{ m.ext() }}</a>
+          <a class="clink" href="{{ P.linkedin }}" target="_blank" rel="noopener me"><span><small>LinkedIn</small>/in/hunzalasaeed890</span>{{ m.ext() }}</a>
+        </div>
+        <form class="form" id="contact-form" data-key="{{ D.WEB3FORMS_KEY }}" data-mail="{{ P.email }}" novalidate>
+          <label>Name<input name="name" autocomplete="name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>What do you need?
+            <select name="service">{% for s in services %}<option>{{ s.name }}</option>{% endfor %}<option>Not sure yet</option></select>
+          </label>
+          <label>Project details<textarea name="message" required placeholder="Your website, goals and timeline"></textarea></label>
+          <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" aria-hidden="true">
+          <button class="btn btn--dark" type="submit" data-magnetic>Send message {{ m.arrow() }}</button>
+          <p class="form__msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

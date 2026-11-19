@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="cs-hero page-intro">
+  <div class="wrap">
+    <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Work</span></nav>
+    <h1 class="h-xl" data-split>{{ projects|length }} live<br><span class="serif acc">projects</span></h1>
+    <p class="lead" style="margin-top:28px">Websites I have built and optimized for clinics, auto shops, accounting firms, event venues, retailers and tech companies in Canada, the UK, the UAE, Saudi Arabia and Pakistan. Every project links to the live site.</p>
+    <div class="filters" role="group" aria-label="Filter projects" style="margin-top:40px">
+      <button class="filter" data-filter="all" aria-pressed="true">All · {{ projects|length }}</button>
+      <button class="filter" data-filter="seo-dev" aria-pressed="false">SEO + Development · {{ projects|selectattr('scope','equalto',D.SEO_DEV)|list|length }}</button>
+      <button class="filter" data-filter="dev" aria-pressed="false">Development · {{ projects|selectattr('scope','equalto',D.DEV)|list|length }}</button>
+    </div>
+  </div>
+</section>
+<section style="padding-bottom:120px">
+  <div class="wrap">
+    <div class="grid" data-stagger>
+      {% for p in projects %}{{ m.pcard(p, eager=loop.index <= 2, h='h2') }}{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="sec" style="padding-top:0">
+  <div class="wrap"><a class="next" href="/#contact" data-cursor="Talk"><span class="mono">Next could be yours</span><span class="h-xl" style="display:block;margin-top:14px">Start a <span class="serif acc">project</span></span></a></div>
+</section>
+{% endblock %}

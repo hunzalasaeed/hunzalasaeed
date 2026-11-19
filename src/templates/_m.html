@@ -1,0 +1,48 @@
+{% macro arrow() %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>{% endmacro %}
+{% macro ext() %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>{% endmacro %}
+{% macro check() %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-opacity=".35"/><path d="m7.5 12.5 3 3 6-7"/></svg>{% endmacro %}
+{% macro play() %}<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>{% endmacro %}
+
+{% macro brandcard(p) %}
+<div class="brandcard" style="--c:{{ p.accent }}">
+  <span class="mono">{{ p.industry }}</span>
+  <strong>{{ p.name }}</strong>
+  <span class="brandcard__url">{{ p.domain }}</span>
+</div>
+{% endmacro %}
+
+{% macro view(p, eager=false) %}
+<div class="browser" aria-hidden="true">
+  <div class="browser__bar"><i></i><i></i><i></i><span>{{ p.domain }}</span></div>
+  <div class="browser__view">
+    {% if p.has_shot %}<img src="{{ p.thumb }}" alt="" width="800" height="1667" loading="{{ 'eager' if eager else 'lazy' }}" decoding="async">
+    {% else %}{{ brandcard(p) }}{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro pcard(p, eager=false, h='h3') %}
+<article class="pcard" data-scope="{{ p.scope_key }}" data-cursor="View">
+  {{ view(p, eager) }}
+  <div class="pcard__meta">
+    <div>
+      <span class="pcard__scope tag {{ 'tag--acc' if p.scope_key == 'seo-dev' else '' }}">{{ p.scope }}</span>
+      <{{ h }}><a href="{{ p.url }}" class="stretched">{{ p.name }}</a></{{ h }}>
+      <p>{{ p.industry }}{% if p.location %} · {{ p.location.split(' · ')[0] }}{% endif %}</p>
+    </div>
+    <span class="pcard__go">{{ arrow() }}</span>
+  </div>
+  <div class="pcard__spot" aria-hidden="true"></div>
+</article>
+{% endmacro %}
+
+{% macro vcard(v) %}
+<article class="vcard" data-src="{{ v.src }}" data-poster="{{ v.poster }}" data-cap="{{ v.brand }} · {{ v.title }}" data-cursor="Play">
+  <img src="{{ v.poster }}" alt="{{ v.brand }}: {{ v.title }} ({{ v.kind|lower }}) video still" width="540" height="960" loading="lazy" decoding="async">
+  <video muted loop playsinline preload="none" aria-hidden="true"></video>
+  <span class="vcard__kind tag">{{ v.kind }}</span>
+  <span class="vcard__play" aria-hidden="true">{{ play() }}</span>
+  <div class="vcard__info"><h3>{{ v.title }}</h3><p>{{ v.brand }}</p></div>
+  <button class="cover" aria-label="Play video: {{ v.brand }}, {{ v.title }}"></button>
+</article>
+{% endmacro %}

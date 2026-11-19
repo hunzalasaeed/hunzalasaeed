@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block preload %}{% if p.has_shot %}<link rel="preload" as="image" href="{{ p.shot }}">{% endif %}{% endblock %}
+{% block main %}
+{% set seo = p.scope_key == 'seo-dev' %}
+{% set wp = p.platform == 'WordPress' %}
+<article>
+<section class="cs-hero page-intro" style="--c:{{ p.accent }}">
+  <div class="wrap">
+    <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/work/">Work</a><span>/</span><span aria-current="page">{{ p.name }}</span></nav>
+    <span class="tag {{ 'tag--acc' if seo else '' }}">{{ p.scope }}</span>
+    <h1 class="h-xl" style="margin-top:22px" data-split>{{ p.name }}</h1>
+    <p class="lead" style="margin-top:26px">{{ p.summary }}</p>
+    <dl class="cs-meta">
+      <div><dt class="mono">Industry</dt><dd>{{ p.industry }}</dd></div>
+      <div><dt class="mono">Location</dt><dd>{{ p.location or '—' }}</dd></div>
+      <div><dt class="mono">Scope</dt><dd>{{ p.scope }}</dd></div>
+      <div><dt class="mono">Platform</dt><dd>{{ p.platform }}</dd></div>
+      <div><dt class="mono">Live site</dt><dd><a href="{{ p.live }}" target="_blank" rel="noopener">{{ p.domain }}</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="cs-shot">
+    <div class="browser">
+      <div class="browser__bar"><i></i><i></i><i></i><span>https://{{ p.domain }}/</span></div>
+      <div class="browser__view">
+        {% if p.has_shot %}<img src="{{ p.shot }}" alt="Homepage of the {{ p.name }} website ({{ p.domain }})" width="1200" height="2500" decoding="async" fetchpriority="high">
+        {% else %}{{ m.brandcard(p) }}{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="cs-body">
+    <aside>
+      <span class="mono">Case study</span>
+      <p style="color:var(--ink-2);margin:14px 0 22px">{{ p.name }} · {{ p.industry }}</p>
+      <a class="btn btn--acc" href="{{ p.live }}" target="_blank" rel="noopener" data-magnetic>Visit live site {{ m.ext() }}</a>
+      {% if p.services %}
+      <div style="margin-top:34px"><span class="mono">On the site</span>
+        <div class="skills-cloud" style="margin-top:14px">{% for s in p.services %}<span class="tag">{{ s }}</span>{% endfor %}</div>
+      </div>
+      {% endif %}
+    </aside>
+    <div>
+      <div class="cs-block" data-reveal>
+        <h2>The brief</h2>
+        <p>{{ p.summary }} The goal was a website that {{ 'loads fast, explains every service clearly and turns local searches into calls and bookings' if seo else 'looks professional on every screen, loads fast and makes it easy for visitors to get in touch' }}.</p>
+      </div>
+      <div class="cs-block" data-reveal>
+        <h2>What I did</h2>
+        <ul class="checks">
+          {% if seo %}
+          <li>{{ m.check() }}<span>Website development and ongoing updates on {{ p.platform }}{% if wp %}, with responsive layouts for mobile, tablet and desktop{% endif %}.</span></li>
+          <li>{{ m.check() }}<span>Keyword research and on-page SEO for the main service pages: titles, meta descriptions, headings and internal links.</span></li>
+          <li>{{ m.check() }}<span>Technical SEO: indexing checks, site speed and structured data (schema markup).</span></li>
+          <li>{{ m.check() }}<span>Local SEO: location-focused content and local citations for {{ p.location.split(' · ')[0] }}.</span></li>
+          {% if p.faq %}<li>{{ m.check() }}<span>AEO &amp; GEO: FAQ content and FAQPage schema, written as clear answers that search engines and AI tools can quote.</span></li>{% endif %}
+          {% else %}
+          <li>{{ m.check() }}<span>Website development on {{ p.platform }}{{ ', built page by page to match the brand' if p.platform == 'Custom build' else '' }}.</span></li>
+          <li>{{ m.check() }}<span>Responsive layouts tested on mobile, tablet and desktop.</span></li>
+          <li>{{ m.check() }}<span>Clean page structure with proper headings, titles and meta descriptions, ready for SEO.</span></li>
+          {% endif %}
+        </ul>
+      </div>
+      {% if p.highlights %}
+      <div class="cs-block" data-reveal>
+        <h2>Highlights</h2>
+        <ul class="checks">{% for h in p.highlights %}<li>{{ m.check() }}<span>{{ h }}</span></li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+      {% if p.gsc %}
+      <div class="cs-block cs-gsc" data-reveal>
+        <h2>Search Console results</h2>
+        {% for g in p.gsc %}<figure style="margin:0 0 20px"><img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy"><figcaption class="mono" style="margin-top:10px">{{ g.caption }}</figcaption></figure>{% endfor %}
+      </div>
+      {% endif %}
+      {% if p.video_objs %}
+      <div class="cs-block" data-reveal>
+        <h2>Video work for {{ p.name }}</h2>
+        <div class="cs-videos">{% for v in p.video_objs %}{{ m.vcard(v) }}{% endfor %}</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+</article>
+
+<a class="next" href="{{ p.next.url }}" data-cursor="Next">
+  <span class="mono">Next project</span>
+  <span class="h-xl" style="display:block;margin-top:14px">{{ p.next.name }}</span>
+</a>
+{% endblock %}

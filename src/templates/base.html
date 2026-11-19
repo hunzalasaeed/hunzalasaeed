@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ desc }}">
+<meta name="author" content="{{ P.name }}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+<meta name="theme-color" content="#08090D">
+<meta property="og:type" content="{{ og_type|default('website') }}">
+<meta property="og:site_name" content="{{ P.name }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ desc }}">
+{% if canonical %}<meta property="og:url" content="{{ canonical }}">{% endif %}
+{% if og_image %}<meta property="og:image" content="{{ og_image }}">
+<meta name="twitter:image" content="{{ og_image }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ desc }}">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css?v={{ ver }}">
+<script>document.documentElement.classList.add('js')</script>
+{% block preload %}{% endblock %}
+{% if ld %}<script type="application/ld+json">{{ jsonld(ld)|safe }}</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"><span></span></div>
+{% block loader %}{% endblock %}
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="{{ P.name }}, home">
+      <span class="logo__mark">{{ P.short }}</span>
+      <span class="logo__name">{{ P.name }}<small>SEO · AEO · GEO · Web · Video</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/work/">Work</a>
+      <a href="/#videos">Videos</a>
+      <a href="/#services">Services</a>
+      <a href="/#about">About</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--acc" href="/#contact" data-magnetic>Let's talk {{ m.arrow() }}</a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="/work/">Work</a><a href="/#videos">Videos</a><a href="/#services">Services</a><a href="/#about">About</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a>
+  <p class="mono">{{ P.email }} · {{ P.phone }}</p>
+</nav>
+
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <span>© <span data-year>{{ year }}</span> {{ P.name }} · {{ P.location }}</span>
+    <span style="display:flex;gap:22px;flex-wrap:wrap">
+      <a href="mailto:{{ P.email }}">Email</a><a href="{{ P.whatsapp }}" rel="noopener" target="_blank">WhatsApp</a>
+      <a href="{{ P.linkedin }}" rel="noopener me" target="_blank">LinkedIn</a><a href="/work/">All work</a>
+    </span>
+  </div>
+  <p class="ftr__big" aria-hidden="true">{{ P.name }}</p>
+</footer>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Video player" aria-hidden="true">
+  <button class="lightbox__close" aria-label="Close video">✕</button>
+  <video controls playsinline preload="none"></video>
+  <p class="lightbox__cap mono"></p>
+</div>
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/js/site.js?v={{ ver }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block preload %}<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="cs-hero page-intro" style="min-height:80vh">
+  <div class="wrap">
+    <span class="mono">Error 404</span>
+    <h1 class="h-xl" style="margin-top:20px" data-split>This page<br>isn't <span class="serif acc">indexed.</span></h1>
+    <p class="lead" style="margin-top:26px">The page you are looking for doesn't exist. Try the homepage or browse the work.</p>
+    <div class="hero__cta"><a class="btn btn--acc" href="/">Go home {{ m.arrow() }}</a><a class="btn btn--ghost" href="/work/">See the work</a></div>
+  </div>
+</section>
+{% endblock %}
