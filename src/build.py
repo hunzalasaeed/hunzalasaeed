@@ -145,6 +145,9 @@ def build():
     for child in DIST.iterdir():  # empty dist/ but keep the folder (a preview server may be using it)
         shutil.rmtree(child) if child.is_dir() else child.unlink()
     shutil.copytree(ROOT / "assets", DIST / "assets", ignore=shutil.ignore_patterns("raw", "profile-original.*"))
+    if (ROOT / "static").exists():  # files served from the site root (e.g. Search Console verification)
+        for f in (ROOT / "static").iterdir():
+            shutil.copy(f, DIST / f.name)
     if photo_info() and SITE:
         person_ld["image"] = SITE + "/assets/img/profile.webp"
     faq_ld = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in D.FAQ]}
