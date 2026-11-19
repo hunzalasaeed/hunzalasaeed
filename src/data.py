@@ -10,7 +10,7 @@ Rules used for this content:
 # Set this to the live domain before publishing, e.g. "https://www.yourdomain.com"
 # (no trailing slash). Canonical tags, Open Graph URLs, VideoObject schema and
 # sitemap.xml are only generated when it is set.
-SITE_URL = ""
+SITE_URL = "https://hunzalasaeed.vercel.app"
 
 # Web3Forms access key for the contact form (free at web3forms.com).
 # Empty = the form opens the visitor's email app with the message pre-filled.

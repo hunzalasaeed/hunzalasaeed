@@ -16,6 +16,8 @@ I help businesses get found on Google and get cited by AI answer engines like Ch
 **Video & design:** Premiere Pro · After Effects · CapCut · Photoshop · Canva
 
 ### Portfolio
+🔗 **Live site: [hunzalasaeed.vercel.app](https://hunzalasaeed.vercel.app)**
+
 This repository is the source of my portfolio website: an animated static site with 24 case studies and a video wall,
 built with HTML, CSS, GSAP and a small Python generator. See [DEVELOPMENT.md](DEVELOPMENT.md) for how it's built.
 

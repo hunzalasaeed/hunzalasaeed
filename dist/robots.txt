@@ -26,3 +26,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+Sitemap: https://hunzalasaeed.vercel.app/sitemap.xml
